@@ -40,15 +40,17 @@ while Status:
                 Status=True
                 while Status:
                     for i in Specification_Consellor:
-                        Specification_Subject={}
-                        Subject_name=input("Enter subject name :")     
-                        Subject_fees=int(input("Enter Subject fess:"))          
-                        Faculty_name=input("Enter faculty name:")
-                        Specification_Subject['SUBJECT_NAME']=Subject_name
-                        Specification_Subject['SUBJECT_FEES']=Subject_fees
-                        Specification_Subject['SUBJECT_FACULTY']=Faculty_name
-                        Specification_Consellor["COURSE"]=Specification_Subject
-                    userchoice="do you want add more subject press'y' for yes and 'n for no:'"
+                        
+                            Specification_Subject={}
+                            Subject_name=input("Enter subject name :")     
+                            Subject_fees=int(input("Enter Subject fess:"))          
+                            Faculty_name=input("Enter faculty name:")
+                            Specification_Subject['SUBJECT_NAME']=Subject_name
+                            Specification_Subject['SUBJECT_FEES']=Subject_fees
+                            Specification_Subject['SUBJECT_FACULTY']=Faculty_name
+                            Specification_Consellor["COURSE"]=Specification_Subject
+                            
+                    userchoice=input("do you want add more subject press'y' for yes and 'n' for 'no':")
                     if userchoice=='n':
                         Status=False
                 Counsellor["SR_NO"]=Specification_Consellor
