@@ -1,9 +1,9 @@
-from collections import Counter
 class pizza:
 
     Customer={}
+
     
-    def __init__(self,price1=10.99,price2=9.5,quantity_pizza=0,quantity_pasta=0,total="",name="",colddrink=1,bruschetta=2,chocobrwni=2):
+    def __init__(self,price1=10.99,price2=9.5,quantity_pizza=0,quantity_pasta=0,total="",name="",colddrink=1,bruschetta=2,chocobrwni=2,Customer={}):
        
         self.price1 = price1
         self.price2 = price2
@@ -14,7 +14,8 @@ class pizza:
         self.colddrink=colddrink
         self.bruschetta=bruschetta
         self.chocobrwni=chocobrwni
-
+        self.Customer=Customer
+       
 
     def inputdetails(self):
         
@@ -46,57 +47,93 @@ class pizza:
         while status:
             specification={}
             print("""
-                    1.  Pizza
-                    2. Pasta
-                    0. exit""")
+                    1. PRESS FOR PIZZA
+                    2. PRESS FOR PASTA
+                    0. PRESS FOR EXIST  """)
             choice=int(input(" Order of food : "))
             if choice==1:
                 self.quantity_pizza = int(input("enter a quantity "))
                 if self.quantity_pizza==1:
                     self.price1=10.99
                     print("Your Pizza Order Ammout is :",self.price1)
-                    break
-                elif self.quantity_pizza==2:
-                    self.price1=self.price1 + 10
-                    print("Your Pizza Order Ammout is :",self.price1)
-                    break
-                elif self.quantity_pizza==3:
-                    self.price3=10.99+ 19
-                    print("Your Pizza Order Ammout is :",self.price3)
                     specification['Pizza_Qty']=self.quantity_pizza
-                    specification['pizza_Price']=self.price3
+                    specification['pizza_Price']=self.price1
                     self.Customer[self.name]=specification
                     print(self.Customer)
-                    break
+                    continue
+                elif self.quantity_pizza==2:
+                    self.price1=20.99
+                    print("Your Pizza Order Ammout is :",self.price1)
+                    specification['Pizza_Qty']=self.quantity_pizza
+                    specification['pizza_Price']=self.price1
+                    self.Customer[self.name]=specification
+                    print(self.Customer)
+                    continue
+                elif self.quantity_pizza==3:
+                    self.price1=29.99
+                    print("Your Pizza Order Ammout is :",self.price1)
+                    specification['Pizza_Qty']=self.quantity_pizza
+                    specification['pizza_Price']=self.price1
+                    self.Customer[self.name]=specification
+                    print(self.Customer)
+                    continue
+                
                 elif self.quantity_pizza>=4:
                     
-                    self.price4=self.price1*self.quantity_pizza
+                    self.price1=self.price1*self.quantity_pizza
                   
-                    print("Your Pizza Order Ammout is :",self.price4)
+                    print("Your Pizza Order Ammout is :",self.price1)
 
                     total_quantity=self.quantity_pizza
                     print(f" Quantity of pizza is {self.quantity_pizza} ***Congratulations !! 1.5ltr SOFT DRINK free***")
                     specification['Pizza_Qty']=self.quantity_pizza
-                    specification['pizza_Price']=self.price4
+                    specification['pizza_Price']=self.price1
                     self.Customer[self.name]=specification
                     print(self.Customer)
+                    sum=0
+                    for i,v in self.Customer.items():
+                        if v and 'pizza_Price' in v.keys(): 
+                            sum+=v['pizza_Price']
+                    print(sum)
+
 
                 else:
                     print(" Invalid Quantity ")
                 
             elif choice==2:
+                specification2={}
                 self.quantity_pasta = int(input("enter a quantity "))
                 if self.quantity_pasta==1:
                     self.price2=9.5
                     print("Your Pasta Order Ammout is :",self.price2)
+                    specification2['Pasta_qty']=self.quantity_pasta
+                    specification2['Pasta_price']=self.price2
+                    #specification['self.Customer']=specification2
+                    self.Customer[self.name]=specification2
+                    print(self.Customer)
                     continue
                 elif self.quantity_pasta==2:
-                    self.price2=self.price2+7.5
+                    self.price2=17.00
                     print("Your Pasta Order Ammout is :",self.price2)
+                    specification['Pasta_qty']=self.quantity_pasta
+                    specification['Pasta_price']=self.price2
+                    self.Customer[self.name]=specification
+                    print(self.Customer)
                     continue
                 elif self.quantity_pasta==3:
-                    self.price2=self.price2+18.0
+                    self.price2=27.50
                     print("Your Pasta Order Ammout is :",self.price2)
+                    specification['Pasta_qty']=self.quantity_pasta
+                    specification['Pasta_price']=self.price2
+                    self.Customer[self.name]=specification
+                    print(self.Customer)
+                    continue
+                elif self.quantity_pasta==0:
+                    self.price2=0
+                    specification['Pasta_qty']=self.quantity_pasta
+                    specification['Pasta_price']=self.price2
+                    self.Customer[self.name]=specification
+                    print(self.Customer)
                     continue
                 elif self.quantity_pasta>=4:
                     self.price2=self.quantity_pasta*9.5
@@ -104,6 +141,10 @@ class pizza:
                     print("Your Pasta Order Ammout is :",self.price2)
                     total_quantity=self.quantity_pasta
                     print(f" Quantity of pasta is {self.quantity_pasta} ***Congratulations !! get{self.bruschetta} BRUSCHETTA free***")
+                    specification['Pasta_qty']=self.quantity_pasta
+                    specification['Pasta_price']=self.price2
+                    self.Customer[self.name]=specification
+                    print(self.Customer)
                
                 else:
                     print(" Invalid Quantity ")
@@ -111,25 +152,34 @@ class pizza:
             elif choice==0:
                 if self.quantity_pasta>=4 and self.quantity_pizza>=4:
                     print(f" Quantity of pasta is {self.quantity_pasta}  and Quantity of pizza is {self.quantity_pizza} ***Congratulations !! get{self.chocobrwni} CHOCOBROWNI free***")
-                    total_quantity = self.quantity_pasta+self.quantity_pizza+self.chocobrwni+self.bruschetta+self.colddrink
-                    print(f" Quantity of pasta is {self.quantity_pasta},\nQuantity of pizza is {self.quantity_pizza} and \nQuantity of chocobrwni is {self.chocobrwni} and \nQuntity of bruschetta is {self.bruschetta} and \n Quntity of Softdrink is {self.colddrink}Total quantity is : ", total_quantity)
-                    self.price4=10.99*self.quantity_pizza
-                    self.price2=self.quantity_pasta*9.5
-                    print("Total amount of price is ",self.price4+self.price2)
-                else:
+                
+                elif self.quantity_pasta>self.quantity_pizza or self.quantity_pasta<self.quantity_pizza:
                     print(f"Quantity of pasta is {self.quantity_pasta} and Quantity of pizza is{self.quantity_pizza}")
                     total_quantity=self.quantity_pasta+self.quantity_pizza
-                    total_price = self.price1+self.price2
-                    print("Total amount is : ",total_price)
+                    sum=0
+                    sum1=0
+                    for i,v in self.Customer.items():
+                        if v and 'pizza_Price' in v.keys(): 
+                            sum+=v['pizza_Price']
+                    for i,v in self.Customer.items():
+                        if v and 'Pasta_price' in v.keys(): 
+                            sum1+=v['Pasta_price']
+                    
+                    print("Total amount is : ",self.price1+self.price2)
+                    
                 c1=input("Do you want to add more customer y for yes and n for no :")
                 if c1=='n':
                     print("----------------Pizza and Pasta Bill----------------")
-
-                    for i in self.Customer.keys():
-                        for i in specification.values():
-                            print("today's total price of pizza :",sum(specification[i]["pizza_Price"]))
-
-
+                    sum=0
+                    sum1=0
+                    for i,v in self.Customer.items():
+                        if v and 'pizza_Price' in v.keys():
+                            sum+=v['pizza_Price']
+                        print("Payment Received from pizza",sum)
+                    for i,v in self.Customer.items():
+                        if v and 'Pasta_price' in v.keys():
+                            sum1+=v['Pasta_price']
+                        print("Payment Received from pizza",sum1)
                     
                     
                     status=False

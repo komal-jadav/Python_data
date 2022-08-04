@@ -20,7 +20,7 @@ def addition():
         num2 = int(input("Enter number2:"))
         ans=num1+num2
         print(ans)
-def mul():
+def mul():  
         num1=int(input("Enter number1:"))
         num2 = int(input("Enter number2:"))
         ans1=num1*num2
