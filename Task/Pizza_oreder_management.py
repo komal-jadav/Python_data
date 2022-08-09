@@ -189,17 +189,12 @@ class pizza:
                     print("Payment Received from pasta",sum_pastaprice)
 
                     print("Payment Received from Today:",sum_pizaprice+sum_pastaprice)
-
-                    for i, v in self.Customer.items():
-                        if v and 'Pizza_Qty' in v.keys():
-                            sum_pizzaqty += v['Pizza_Qty']
                     
-                    
-                    for i, v in self.Customer.items():
+                    for i,v in self.Customer.items():
                         if v and 'Pasta_qty' in v.keys():
-                            sum_pastaqty += v['Pasta_qty']
-                        
-                    print("Number of Pizza and pasta sold in one shift:",sum_pizzaqty+sum_pastaqty)
+                            sum_pizzaqty+=v['Pasta_qty']
+                    print("Payment Received from pizza",sum_pizzaqty)
+                    
                     
                     
                     print("BYE BYE")
