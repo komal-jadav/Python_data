@@ -4,16 +4,11 @@ class pizza:
     Customer_pasta={}
     Total={}
     
-    def __init__(self,price1=1,price2=1,quantity_pizza=0,quantity_pasta=0,total="",name="",colddrink=1,bruschetta=2,chocobrwni=2,Customer={},Customer_pasta={},Total={}):
+    def __init__(self,price1=10.99,price2=9.5,quantity_pizza=0,quantity_pasta=0,total="",name="",colddrink=1,bruschetta=2,chocobrwni=2,Customer={},Customer_pasta={},Total={}):
        
         self.price1 = price1
-        self.price2 = price1
-        self.price3 = price1
-        self.price4 = price1
-        self.price5=price2
-        self.price6=price2
-        self.price7=price2
-        self.price8=price2
+        self.price2 = price2
+        
         self.quantity_pizza=quantity_pizza
         self.quantity_pasta=quantity_pasta
         self.total=total
@@ -102,39 +97,39 @@ class pizza:
                 specification1={}
                 self.quantity_pasta = int(input("enter a quantity "))
                 if self.quantity_pasta==1:
-                    self.price5=9.5
-                    print("Your Pasta Order Ammout is :",self.price5)
+                    self.price2=9.5
+                    print("Your Pasta Order Ammout is :",self.price2)
                     specification['Pasta_qty']=self.quantity_pasta
-                    specification['Pasta_price']=self.price5
-                    self.Customer[self.name]=specification
+                    specification['Pasta_price']=self.price2
+                    self.Customer_pasta[self.name]=specification
                     
                     print(self.Customer_pasta)
                     
                     continue
                 elif self.quantity_pasta==2:
-                    self.price6=17.00
-                    print("Your Pasta Order Ammout is :",self.price6)
+                    self.price2=17.00
+                    print("Your Pasta Order Ammout is :",self.price2)
                     specification1['Pasta_qty']=self.quantity_pasta
-                    specification1['Pasta_price']=self.price6
+                    specification1['Pasta_price']=self.price2
                     self.Customer_pasta[self.name]=specification1
                     
                     print(self.Customer_pasta)
                     continue
                 elif self.quantity_pasta==3:
-                    self.price7=27.50
-                    print("Your Pasta Order Ammout is :",self.price7)
+                    self.price2=27.50
+                    print("Your Pasta Order Ammout is :",self.price2)
                     specification1['Pasta_qty']=self.quantity_pasta
-                    specification1['Pasta_price']=self.price7
+                    specification1['Pasta_price']=self.price2
                     self.Customer_pasta[self.name]=specification1
                     
                     print(self.Customer_pasta)
                     continue
                 elif self.quantity_pasta>=4:
-                    self.price8=self.quantity_pasta*9.5
+                    self.price2=self.quantity_pasta*9.5
                     
-                    print("Your Pasta Order Ammout is :",self.price8)
+                    print("Your Pasta Order Ammout is :",self.price2)
                     specification1['Pasta_qty']=self.quantity_pasta
-                    specification1['Pasta_price']=self.price8
+                    specification1['Pasta_price']=self.price2
                     self.Customer_pasta[self.name]=specification1
                     
                     print(self.Customer_pasta)
@@ -149,9 +144,9 @@ class pizza:
                     print(f" Quantity of pasta is {self.quantity_pasta}  and Quantity of pizza is {self.quantity_pizza} ***Congratulations !! get{self.chocobrwni} CHOCOBROWNI free***")
                     total_quantity = self.quantity_pasta+self.quantity_pizza+self.chocobrwni+self.bruschetta+self.colddrink
                     print(f" Quantity of pasta is {self.quantity_pasta},\nQuantity of pizza is {self.quantity_pizza} and \nQuantity of chocobrwni is {self.chocobrwni} and \nQuntity of bruschetta is {self.bruschetta} and \n Quntity of Softdrink is {self.colddrink}Total quantity is : ", total_quantity)
-                    self.price4=10.99*self.quantity_pizza
-                    self.price8=self.quantity_pasta*9.5
-                    print("Total amount of price is ",self.price4+self.price8)
+                    self.price1=10.99*self.quantity_pizza
+                    self.price2=self.quantity_pasta*9.5
+                    print("Total amount of price is ",self.price1+self.price2)
                     """
                     sum=0
                     sum1=0
@@ -175,6 +170,7 @@ class pizza:
                     
                 c1=input("Do you want to add more customer y for yes and n for no :")
                 if c1=='n':
+                    
                     print("----------------Pizza and Pasta Bill----------------")
 
                     sum=0
@@ -188,10 +184,14 @@ class pizza:
                         if v and 'Pasta_price' in v.keys():
                             sum1+=v['Pasta_price']
                     print("Payment Received from pasta",sum1)
+
+                    print("Payment Received from Today:",sum+sum1)
+
                     
                     status=False
+                    break
                     
-                else:
+                elif c1=='y':
                     obj.inputdetails()
                     obj.food()
 

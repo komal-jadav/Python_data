@@ -1,4 +1,5 @@
 from cProfile import label
+from lib2to3.pgen2.token import DOUBLESLASH
 import tkinter
 from turtle import Screen
 
@@ -6,7 +7,7 @@ screen=tkinter.Tk()
 
  #  W X H
 
-screen.geometry("500x500")
+screen.geometry("1000x500")
 
 screen.configure(bg="grey")
 
@@ -22,7 +23,7 @@ def myfun():
 
 # lable
 
-lbl=tkinter.Label(screen,text="Welcome to tkinter",font=("arial",26,"bold"),bg="grey",fg="blue")
+lbl=tkinter.Label(screen,text="Welcome to Komal Webpage",font=("arial",26,"bold"),bg="grey",fg="blue",)
 
 lbl.place(x=80,y=10)
 
