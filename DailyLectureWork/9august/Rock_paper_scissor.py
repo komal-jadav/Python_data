@@ -8,6 +8,7 @@ screen.geometry("500x500")
 var_user_choice=tkinter.StringVar()
 var_computer_choice=tkinter.StringVar()
 var_result_choice=tkinter.StringVar()
+var_score=tkinter.StringVar()
 sum=0
 sum1=0
 var_final_result=tkinter.StringVar()
@@ -22,7 +23,7 @@ def myfun(msg):
     if msg==com:
         var_result_choice.set("TIE")
     else:
-        if (msg=="PAPER" and com=="STONE") or (msg=="SCISSOR" and com=="PAPER") or (msg=="STONE" and com=="SCISSOR"):
+        if (msg=="PAPER" and com=="ROCK") or (msg=="SCISSOR" and com=="PAPER") or (msg=="ROCk" and com=="SCISSOR"):
             var_result_choice.set("USER WON")
             sum+=1
             user_score.config(text=sum)
@@ -34,7 +35,9 @@ def myfun(msg):
             sum1+=1
             Computer_score.config(text=sum1)
     
-           
+        
+
+
 btn= tkinter.Button(screen,text="ROCK",font=('arial',20,'bold'),bg="blue",fg="white",activebackground="black",activeforeground="white",command=lambda:myfun("ROCK"))
 btn.place(x=10,y=10)
 
@@ -68,6 +71,5 @@ Computer_score = tkinter.Label(screen,text="sum1",font=('arial',14,'bold'),bg="b
 Computer_score.place(x=300,y=200)
 
 
-btn= tkinter.Button(screen,textvariable=var_result_choice,font=('arial',20,'bold'),bg="black",fg="white",width=25)
-btn.place(x=10,y=420)
+
 screen.mainloop()
